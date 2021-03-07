@@ -1,0 +1,234 @@
+@keyframes DrawBracketName {
+	0% { width: 0; }
+	50% { width: 0; }
+	100% { width: 100%; }
+	}
+@keyframes Drawout {
+	0%{opacity:0;}
+	60%{opacity:0;}
+	100%{opacity:1;}
+}
+@keyframes slide-down {
+	0% { opacity: 0; -webkit-transform: translateY(-100%); }   
+	80% { opacity: 0; -webkit-transform: translateY(-100%); }
+  100% { opacity: 1; -webkit-transform: translateY(0); }
+}
+@-webkit-keyframes focus-in-expand {
+	0% {
+	  letter-spacing: -0.5em;
+	  -webkit-filter: blur(12px);
+			  filter: blur(12px);
+	  opacity: 0;
+	}
+	70% {
+		letter-spacing: -0.5em;
+		-webkit-filter: blur(12px);
+				filter: blur(12px);
+		opacity: 0;
+	  }
+	100% {
+	  -webkit-filter: blur(0px);
+			  filter: blur(0px);
+	  opacity: 1;
+	}
+  }
+  @keyframes focus-in-expand {
+	0% {
+	  letter-spacing: -0.5em;
+	  -webkit-filter: blur(12px);
+			  filter: blur(12px);
+	  opacity: 0;
+	}
+	70% {
+		letter-spacing: -0.5em;
+		-webkit-filter: blur(12px);
+				filter: blur(12px);
+		opacity: 0;
+	  }
+	100% {
+	  -webkit-filter: blur(0px);
+			  filter: blur(0px);
+	  opacity: 1;
+	}
+  }
+  
+.ladder-container {
+	position: absolute;
+	margin-left: 50%;
+	top:150px;
+	transform: translateX(-50%);
+	justify-content:center;
+	align-items:center;
+	opacity: 0;
+
+	transition: opacity 1s;
+	color: white;
+	>.bracket {
+		>.connector {
+			display: none;
+		}
+	}
+}
+.ladder-container.show {
+	opacity: 1;
+}
+.bracket {
+	display: flex;
+	justify-content: flex-end;
+	position: relative;
+
+	&:first-child {
+		>.connector {
+	top:50%;
+		}
+	}
+	&:nth-child(2) {
+		>.connector {
+			top: 0%;
+		}
+	}
+}
+.parent-brackets {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	position: relative;
+}
+.empty-bracket {
+	position: relative;
+	>.bracket {
+		padding-right: 240px;
+	}
+	>.connector {
+		width: 240px;
+		height: 2px;
+		top: 50%;
+	}
+	&:nth-child(2) {
+		>.bracket {
+			>.connector {
+				top: 0%;
+			}
+		}
+	}
+}
+.loser-parent-indicator {
+	position: absolute;
+	width: 15px;
+	height: 15px;
+	left: 5px;
+	top: calc(50% - 20px);
+	background-size: contain;
+	opacity: 0.2;
+}
+.connector {
+	position: absolute;
+	right: 0;
+	height: 50%;
+	background-color:rgba(8,5,72,0.8);
+	width: 3px;
+	animation-duration:3s;
+	animation-name:Drawout;
+}
+.bracket-details {
+	.match-details {
+		.team-data {
+			&:first-child {
+				border-bottom: 1px solid transparent;
+				margin-bottom:15px;
+				height:60px;
+				
+			}
+			display: flex;
+			height:60px;
+			.team-name {
+				flex: 1;
+				display: flex;
+				align-items: center;
+				justify-content: center;	
+				background-color:rgba(0,150,255,0.7);
+				-webkit-animation: focus-in-expand 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	            animation: focus-in-expand 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+			}
+			.team-score {
+				width: 60px;
+				display: flex;
+				font-size:30px;
+				margin-left:15px;
+				align-items: center;
+				justify-content: center;
+				background-color:black;
+				animation-name:slide-down;
+				animation-duration:3s;
+				
+			}
+			.team-logo {
+				width: 70px;
+				height: 60px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				background-color:rgba(8,5,72,0.8);
+				img {
+					height: 55px;
+					animation-duration:3s;
+	                animation-name:Drawout;
+				}
+			}
+		}
+
+		display: flex;
+		flex-direction: column;
+		width: 400px;
+		margin: 10px 20px;
+		border-radius: 2px;
+		padding: 5px;
+		z-index: 1;
+		cursor: pointer;
+	}
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	animation-name:DrawBracketName;
+	animation-duration:1s;
+}
+.match-connector {
+	width:100%;
+	position: absolute;
+	height: 3px;
+	background-color:rgba(8,5,72,0.8);
+	animation-duration:3s;
+	animation-name:Drawout;
+}
+.match-connector.last-match {
+	width: 20px;
+	left: 0;
+	animation-duration:3s;
+	animation-name:Drawout;
+}
+.match-connector.first-match {
+	width: 20px;
+	right: 0;
+	animation-duration:3s;
+	animation-name:Drawout;
+}
+.tournament-data {
+	img {
+		max-height: 64px;
+		
+	}
+	display: flex;
+	padding: 10px;
+	align-items: center;
+	justify-content: center;
+	margin-bottom:75px;
+	background-color:rgba(8,5,72,0.8);
+	
+}
+.tournament-name {
+	text-transform: uppercase;
+	font-size: 45px;
+	padding-left: 22px;
+
+}
